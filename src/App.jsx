@@ -11,10 +11,11 @@ function App() {
   const [erro, setErro] = useState(null);
 
   const [showallMedicines, setShowAllMedicines] = useState(true);
+  const [search, setSearch] = useState('');
 
-  const medicinesFiltered = showallMedicines
-    ? medicines.filter(med => med.status === 1)
-    : medicines;
+  const medicinesFiltered = medicines.filter(med => showallMedicines ? (med.status) === 1 : true).filter(med =>
+    med.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   const fetchMedicamentos = async () => {
     try {
@@ -48,6 +49,7 @@ function App() {
     <div>
       
       <h1>CAPS II LESTE</h1>
+      <input type='text' placeholder='buscar...' value={search} onChange={e => setSearch(e.target.value)}/>
       <ToggleBox isChecked={showallMedicines} onToggle={() => setShowAllMedicines(!showallMedicines)}/>
       <h3>ultima atualização {hour}</h3>
       {erro && <p style={{color: 'red'}}>{erro}</p>}

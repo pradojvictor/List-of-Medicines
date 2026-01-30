@@ -13,8 +13,12 @@ function App() {
   const [showallMedicines, setShowAllMedicines] = useState(true);
   const [search, setSearch] = useState('');
 
+  const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
   const medicinesFiltered = medicines.filter(med => showallMedicines ? (med.status) === 1 : true).filter(med =>
-    med.name.toLowerCase().includes(search.toLowerCase())
+    removeAccents(med.name.toLowerCase()).includes(removeAccents(search.toLowerCase()))
   );
 
   const fetchMedicamentos = async () => {

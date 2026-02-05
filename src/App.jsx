@@ -15,6 +15,14 @@ function App() {
 
   const [showOnlyActive, setShowOnlyActive] = useState(true);
 
+  const [toggle, setToggle] = useState(true);
+
+  function handleToggle() {
+    setToggle(toggle => !toggle);
+    setShowOnlyActive(prev => !prev);
+    setShowAllMedicines(!showallMedicines)
+  }
+
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
@@ -69,18 +77,24 @@ function App() {
           </svg>
           <input className='input-search' type='text' placeholder='buscar...' value={search} onChange={e => setSearch(e.target.value)} />
         </div>
-        {/* <ToggleBox isChecked={showallMedicines} onToggle={() => setShowAllMedicines(!showallMedicines)} /> */}
-
         {erro && <p style={{ color: 'red' }}>{erro}</p>}
       </div>
       <div className='inf-text'>
+        <div className='text-h3'>
         <h3>{showOnlyActive ? "Medicamentos ativos" : "Todos os medicamentos"}</h3>
-            <input
-              type="checkbox"
-              checked={showOnlyActive}
-              onChange={() => setShowOnlyActive(prev => !prev)}
-              onClick={() => setShowAllMedicines(!showallMedicines)}
-            />
+        </div>
+        <section>
+          <label className={`${toggle}`} onClick={handleToggle}>
+            <div className={`${toggle}-theme`}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`true-icon`}>
+                <path d="m2.25 12.321 7.27 6.491c.143.127.321.19.499.19.206 0 .41-.084.559-.249l11.23-12.501c.129-.143.192-.321.192-.5 0-.419-.338-.75-.749-.75-.206 0-.411.084-.559.249l-10.731 11.945-6.711-5.994c-.144-.127-.322-.19-.5-.19-.417 0-.75.336-.75.749 0 .206.084.412.25.56" fillRule="nonzero" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`false-icon`}>
+                <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
+              </svg>
+            </div>
+          </label>
+        </section>
       </div>
       <div className='list-container'>
         <div className='div-update'>
@@ -100,10 +114,3 @@ function App() {
 }
 
 export default App;
-
-
-
-{/* <button onClick={() => setShowAllMedicines(!showallMedicines)}>
-          {showallMedicines ? <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm4.998 13.245c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75zm0-3.248c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75zm0-3.252c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero" /></svg>
-            : <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm4.998 11.745c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75zm0-3.248c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75zm0-3.252c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero" /></svg>}
-        </button> */} 

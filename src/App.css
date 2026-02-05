@@ -1,9 +1,10 @@
-*{
+* {
   margin: 0;
   padding: 0;
   text-align: center;
 }
-.div-container{
+
+.div-container {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -12,7 +13,7 @@
   background-color: #e1ce8a;
 }
 
-.div-header{
+.div-header {
   border-radius: 1rem;
   width: 95vw;
   margin-top: .5rem;
@@ -23,7 +24,7 @@
   box-shadow: 2px 2px 5px gray;
 }
 
-.list-container{
+.list-container {
   background-image: url(../src/assets/img/ilus02.png);
   background-size: cover;
   background-position: center;
@@ -35,7 +36,7 @@
 
 }
 
-.div-title{
+.div-title {
   height: 7vh;
   border-radius: .5rem;
   margin-bottom: 2rem;
@@ -43,47 +44,126 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  h1{
+
+  h1 {
     font-size: 2.8rem;
     color: white;
     text-shadow: 2px 2px 5px gray;
   }
 }
 
-.div-update{
+.div-update {
   font-size: .7rem;
   text-transform: uppercase;
-   color: white;
+  color: white;
   background-color: rgb(255, 113, 93);
   border-radius: .9rem .9rem 0rem 0rem;
   margin: .1rem;
 }
 
-.inf-text{
+.inf-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin: 1rem;
+}
+
+.text-h3{
+  width: 70%;
+  h3{
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-family: "Instrument Sans", sans-serif;
+    font-weight: 700;
+    
+  }
+}
+
+
+.true {
+  width: 5rem;
+  height: 2rem;
+  position: relative;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.623);
+  border-radius: 2rem;
+  box-shadow: inset rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, inset rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  transition: 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.false {
+  width: 5rem;
+  height: 2rem;
+  position: relative;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.623);
+  border-radius: 2rem;
+  box-shadow: inset rgba(9, 30, 66, 0.08) 0px 0px 0px 1px, inset rgba(9, 30, 66, 0.25) 0px 4px 8px -2px;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.true-theme {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background-color: black;
+  position: relative;
+  left: -1.5rem;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  .true-icon {
+    color: white;
+    height: 80%;
 
-
-
-
-
-
-
-
-
-
-
- button{
-  background: transparent;
-    width: 5rem;
-    height: 4rem;
+    &:hover {
+      color: orange;
+    }
   }
-.div-container-search{
+
+  .false-icon {
+    display: none;
+  }
+}
+
+.false-theme {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background-color: black;
+  position: relative;
+  left: 1.5rem;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .false-icon {
+    color: white;
+    height: 80%;
+
+    &:hover {
+      color: orange;
+    }
+  }
+
+  .true-icon {
+    display: none;
+  }
+}
+
+
+.div-container-search {
   width: 80vw;
   margin: auto;
   display: flex;
@@ -92,19 +172,22 @@
   height: 2rem;
   gap: .5rem;
   background-color: rgba(255, 255, 255, 0.781);
-  svg{
+
+  svg {
     margin-left: .5rem;
     margin-top: .3rem;
     fill: black;
   }
 }
-.input-search{
+
+.input-search {
   border: none;
   text-align: left;
   background-color: transparent;
   font-weight: 500;
 }
-.input-search:focus{
+
+.input-search:focus {
   outline: none;
   border: none;
   /* border: 1px solid #4A90E2;  */
@@ -114,8 +197,7 @@
 
 
 @media screen and (min-width: 700px) {
-  .input-search{
+  .input-search {
     width: 60vw;
   }
 }
-

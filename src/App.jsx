@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios';
 import { gifs } from './assets';
-import ToggleBox from './components/Toggle';
 
 function App() {
   const [medicines, setMedicines] = useState([]);
@@ -16,6 +15,13 @@ function App() {
   const [showOnlyActive, setShowOnlyActive] = useState(true);
 
   const [toggle, setToggle] = useState(true);
+
+  const colorPalette = [
+    // '#eb8325',
+    // '#1c545c',
+    // '#9c9d62',
+    // '#a2aa79'
+  ]
 
   function handleToggle() {
     setToggle(toggle => !toggle);
@@ -81,7 +87,7 @@ function App() {
       </div>
       <div className='inf-text'>
         <div className='text-h3'>
-        <h3>{showOnlyActive ? "Medicamentos ativos" : "Todos os medicamentos"}</h3>
+          <h3>{showOnlyActive ? "Medicamentos ativos" : "Todos os medicamentos"}</h3>
         </div>
         <section>
           <label className={`${toggle}`} onClick={handleToggle}>
@@ -102,9 +108,9 @@ function App() {
         </div>
         <div className='div-list'>
           {medicinesFiltered.map((med, id) => (
-            <div key={id}>
+            <div key={id} className='card-medicines' style={{ backgroundColor: colorPalette[id % colorPalette.length] }}>
               <p >{med.name}</p>
-              <p >{med.status}</p>
+              {/* <p >{med.status}</p> */}
             </div>
           ))}
         </div>

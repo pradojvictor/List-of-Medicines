@@ -30,10 +30,29 @@
   background-position: center;
   border-radius: 1rem;
   width: 92vw;
-  height: 70vh;
+  height: 50vh;
+  overflow-x: hidden;
   margin-bottom: 1rem;
   box-shadow: 2px 2px 5px gray;
+}
 
+.card-medicines{
+  margin: auto;
+  margin-top: .1rem;
+  /* background-color: tomato; */
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(8.8px);
+  -webkit-backdrop-filter: blur(8.8px);
+  width: 85vw;
+  height: 2rem;
+  border-radius: 1rem 1rem 0.5rem 0.5rem;
+}
+.card-medicines:hover {
+  background: rgba(255, 255, 255, 0.70);
+  width: 85vw;
+  transition: 0.5s;
+  height: 6rem;
+  border-radius: 1rem 1rem 0.5rem 0.5rem;
 }
 
 .div-title {
@@ -59,7 +78,9 @@
   background-color: rgb(255, 113, 93);
   border-radius: .9rem .9rem 0rem 0rem;
   margin: .1rem;
+  margin-bottom: .5rem;
 }
+
 
 .inf-text {
   display: flex;

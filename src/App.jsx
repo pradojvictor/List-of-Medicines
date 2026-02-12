@@ -43,7 +43,7 @@ function App() {
   const fetchMedicamentos = async () => {
     try {
       setLoading(true);
-      const timer = new Promise((resolve) => setTimeout(resolve, 1000));
+      const timer = new Promise((resolve) => setTimeout(resolve, 5000));
       const apiCall = axios.get('https://api.npoint.io/33b08d2edd649671343a');
       const [response] = await Promise.all([apiCall, timer]);
 
@@ -63,8 +63,23 @@ function App() {
 
   if (loading) {
     return <div className="loader">
-      <img src={gifs.img03} alt="Logo" />
-      <h1>carregando.....</h1>
+      <div className='div-inf-gif'>
+        <img className='git-img' src={gifs.img03} alt="Gif" />
+        <div className="loader-text">
+          <span className="char">C</span>
+          <span className="char">A</span>
+          <span className="char">P</span>
+          <span className="char">S</span>
+          <span className='space-char'></span>
+          <span className="char">II</span>
+          <span className='space-char'></span>
+          <span className="char">L</span>
+          <span className="char">E</span>
+          <span className="char">S</span>
+          <span className="char">T</span>
+          <span className="char">E</span>
+        </div>
+      </div>
     </div>;
   }
 
@@ -151,12 +166,15 @@ function App() {
         </svg>
       </span>
       <ul className={`${isActive ? "active" : "inactive"}`}>
-        menu
         <span className='span-info' onClick={onMenu}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z" />
           </svg>
         </span>
+
+        <div className='div-menu'>
+          menu 2
+        </div>
       </ul>
     </div>
   )

@@ -219,19 +219,28 @@ ul{
 .loader{
   width: 100vw;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   overflow: hidden;
   background-image: url(../src/assets/img/ilus01.png);
   background-size: cover;
   background-position: center;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+
   .git-img{
     width: 40%;
   }
+}
+
+.loader-finish {
+  transform: translateY(-100%);
 }
 
 .div-inf-gif{
@@ -254,13 +263,20 @@ ul{
         .char {
             display: inline-block;
             transform: translateY(100%);
-            animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            animation: reveal 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
         }
         .char:nth-child(1) { animation-delay: 0.2s; }
-        .char:nth-child(2) { animation-delay: 0.3s; }
-        .char:nth-child(3) { animation-delay: 0.4s; }
-        .char:nth-child(4) { animation-delay: 0.5s; }
-        .char:nth-child(5) { animation-delay: 0.6s; }
+        .char:nth-child(2) { animation-delay: 0.4s; }
+        .char:nth-child(3) { animation-delay: 0.6s; }
+        .char:nth-child(4) { animation-delay: 0.8s; }
+        .char:nth-child(5) { animation-delay: 0.10s; }
+        .char:nth-child(6) { animation-delay: 0.12s; }
+        .char:nth-child(7) { animation-delay: 0.14s; }
+        .char:nth-child(8) { animation-delay: 0.16s; }
+        .char:nth-child(9) { animation-delay: 0.18s; }
+        .char:nth-child(10) { animation-delay: 0.20s; }
+        .char:nth-child(11) { animation-delay: 0.22s; }
+        .char:nth-child(12) { animation-delay: 0.24s; }
 
 
         .space-char{
@@ -268,13 +284,16 @@ ul{
         }
 
         @keyframes reveal {
-            0% {
-                transform: translateY(100%);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
+          0% {
+            transform: translateY(100%);
+          }
+          10%, 99% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-100%);
+          }
+}
 
 .text-h3{
   width: 70%;

@@ -26,6 +26,16 @@ function App() {
     // '#a2aa79'
   ]
 
+
+  window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader');
+    
+    // Adicionamos um pequeno delay para o usuário ver a animação das letras primeiro
+    setTimeout(() => {
+        loader.classList.add('loader-finish');
+    }, 4000); // 2 segundos (ajuste conforme necessário)
+});
+
   function handleToggle() {
     setToggle(toggle => !toggle);
     setShowOnlyActive(prev => !prev);

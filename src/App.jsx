@@ -19,21 +19,11 @@ function App() {
   const [isActive, setIsActive] = useState(false)
   const onMenu = () => setIsActive(!isActive)
 
-  const colorPalette = [
-    // '#eb8325',
-    // '#1c545c',
-    // '#9c9d62',
-    // '#a2aa79'
-  ]
-
-
   window.addEventListener('load', () => {
     const loader = document.querySelector('.loader');
-    
-    // Adicionamos um pequeno delay para o usuário ver a animação das letras primeiro
     setTimeout(() => {
         loader.classList.add('loader-finish');
-    }, 4000); // 2 segundos (ajuste conforme necessário)
+    }, 4000);
 });
 
   function handleToggle() {
@@ -136,12 +126,12 @@ function App() {
         </div>
         <div className='div-list'>
           {medicinesFiltered.map((med, id) => (
-            <div key={id} className='card-medicines' style={{ backgroundColor: colorPalette[id % colorPalette.length] }}>
+            <div key={id} className='card-medicines'>
               <p className='name'>{med.name}</p>
               <div className='inf-medicines'>
                 <div className='inf-names'>
-                  <p>Depaken</p>
-                  <p>valproato de sodio</p>
+                  <p>{med.namefantasiaone}</p>
+                  <p>{med.namefantasiatwo}</p>
                 </div>
                 <div className='inf-all'>
                   <div className='inf-detal'>
@@ -150,19 +140,19 @@ function App() {
                   </div>
                   <div className='inf-detal'>
                     <p><strong>entrada:</strong></p>
-                    <p>25/01/2026</p>
+                    <p>{med.entrada}</p>
                   </div>
                   <div className='inf-detal'>
                     <p><strong>quantidade:</strong></p>
-                    <p>5000</p>
+                    <p>{med.quantidade}</p>
                   </div>
                   <div className='inf-detal'>
                     <p><strong>dosagem:</strong></p>
-                    <p>250mg</p>
+                    <p>{med.dosagem}</p>
                   </div>
                   <div className='inf-detal'>
                     <p><strong>tipo:</strong></p>
-                    <p>comprimido</p>
+                    <p>{med.tipo}</p>
                   </div>
                 </div>
               </div>

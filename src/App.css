@@ -49,8 +49,6 @@
   height: 1.9rem;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
   overflow: hidden;
-
-
 }
 .card-medicines:hover {
   background: rgba(255, 255, 255, 0.30);
@@ -206,6 +204,10 @@ ul{
   transform: translateX(0);
 }
 
+.inactive{
+  display: none;
+}
+
 
 .div-menu{
   width: 80%;
@@ -214,6 +216,7 @@ ul{
   background: url(../src/assets/img/ilus02.png);
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 
 .loader{

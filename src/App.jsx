@@ -3,6 +3,7 @@ import './App.css'
 import axios from 'axios';
 import { gifs } from './assets';
 import Menu from './components/Menu';
+import FaqMenu from './components/FaqMenu';
 
 function App() {
   const [medicines, setMedicines] = useState([]);
@@ -174,7 +175,7 @@ function App() {
         </span>
 
         <div className='div-menu'>
-          <Menu/>
+          <FaqMenu/>
         </div>
       </ul>
     </div>

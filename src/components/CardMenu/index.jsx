@@ -11,7 +11,7 @@ export default function CardMenu({ title, content }) {
                 <h3>{title}</h3>
                 {!down && (
                     <div className="content-body">
-                        <p>{content}</p>
+                        <div>{content}</div>
                     </div>
                 )}
             </div>

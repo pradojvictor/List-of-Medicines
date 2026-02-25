@@ -1,4 +1,4 @@
-import { Children, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './index.css';
 
 export default function FaqCard({ title, children }) {

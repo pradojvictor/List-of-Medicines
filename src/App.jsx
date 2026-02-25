@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios';
 import { gifs } from './assets';
-import Menu from './components/Menu';
 import FaqMenu from './components/FaqMenu';
 
 function App() {

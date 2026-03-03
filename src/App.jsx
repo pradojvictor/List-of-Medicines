@@ -3,6 +3,7 @@ import './App.css'
 import axios from 'axios';
 import { gifs } from './assets';
 import FaqMenu from './components/FaqMenu';
+import Carousel from './components/Carousel';
 
 function App() {
   const [medicines, setMedicines] = useState([]);
@@ -159,6 +160,12 @@ function App() {
               </div>
             </div>
           ))}
+        </div>
+        <div>
+           <Carousel autoplay autoplayInterval={5000}> 
+            <div><img src="https://picsum.photos/1200/600?random=1" alt="Imagem 1" /></div> 
+            <div><img src="https://picsum.photos/1200/600?random=1" alt="Imagem 1" /></div> 
+           </Carousel>
         </div>
       </div>
       <span className={`${isActive}-span-info`} onClick={onMenu}>

@@ -46,7 +46,7 @@ function App() {
     try {
       setLoading(true);
       const timer = new Promise((resolve) => setTimeout(resolve, 5000));
-      const apiCall = axios.get('https://api.npoint.io/33b08d2edd649671343a');
+      const apiCall = axios.get('https://gist.githubusercontent.com/pradojvictor/47356a6e348ba3af293359fd0031fb89/raw/fe9dd9fd91b82841318c19deebc26ff1f6b4a4a3/mecidamentos.json');
       const [response] = await Promise.all([apiCall, timer]);
 
       setMedicines(response.data.medicamentos);

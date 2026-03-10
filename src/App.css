@@ -31,7 +31,7 @@ body{
 
 .div-header {
   border-radius: 1rem;
-  width: 95vw;
+  width: 95%;
   margin-top: .5rem;
   height: 25vh;
   background-image: url(../src/assets/img/ilus01.png);
@@ -45,7 +45,7 @@ body{
   background-size: cover;
   background-position: center;
   border-radius: 1rem;
-  width: 92vw;
+  width: 92%;
   height: 70vh;
   overflow-x: hidden;
   margin-bottom: 1rem;
@@ -61,14 +61,14 @@ body{
   background: rgba(255, 255, 255, 0.30);
   backdrop-filter: blur(8.8px);
   -webkit-backdrop-filter: blur(8.8px);
-  width: 85vw;
+  width: 85%;
   height: 1.9rem;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
   overflow: hidden;
 }
 .card-medicines:hover {
   background: rgba(255, 255, 255, 0.30);
-  width: 85vw;
+  width: 85%;
   transition: 0.5s;
   height: 15rem;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
@@ -407,7 +407,7 @@ ul{
 
 
 .div-container-search {
-  width: 80vw;
+  width: 80%;
   margin: auto;
   display: flex;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
@@ -424,7 +424,7 @@ ul{
 }
 
 .div-container-search:hover {
-  width: 85vw;
+  width: 85%;
   background-color: rgba(255, 255, 255, 1);
   transition: 0.5s;
 }

@@ -60,19 +60,21 @@ function App() {
   };
 
 useEffect(() => {
-    fetchMedicamentos();
+  fetchMedicamentos();
+  const hideLoader = () => {
     const loader = document.querySelector('.loader');
-    const handleFinish = () => {
-        setTimeout(() => {
-            if (loader) loader.classList.add('loader-finish');
-        }, 4000);
-    };
-    if (document.readyState === 'complete') {
-        handleFinish();
-    } else {
-        window.addEventListener('load', handleFinish);
-        return () => window.removeEventListener('load', handleFinish);
+    if (loader) {
+      setTimeout(() => {
+        loader.classList.add('loader-finish');
+      }, 4000);
     }
+  };
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader);
+    return () => window.removeEventListener('load', hideLoader);
+  }
 }, []);
 
   if (loading) {

@@ -19,19 +19,20 @@ export default function FaqCard({ title, children }) {
     //     }
     // }, [isOpen]);
 
-useEffect(() => {
+useLayoutEffect(() => {
     const el = contentRef.current;
     if (!el) return;
-    requestAnimationFrame(() => {
+    const timeout = setTimeout(() => {
         if (isOpen) {
-            el.style.maxHeight = el.scrollHeight + 'px';
+            el.style.maxHeight = `${el.scrollHeight}px`;
             el.style.opacity = '1';
         } else {
             el.style.maxHeight = '0px';
             el.style.opacity = '0';
         }
-    });
-}, [isOpen]);
+    }, 50);
+    return () => clearTimeout(timeout);
+}, [isOpen, children]);
 
     return (
         <div className='div-card'>

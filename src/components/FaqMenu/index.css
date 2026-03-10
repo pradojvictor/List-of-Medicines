@@ -5,6 +5,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .div-simple{
+        background-image: url(../src/assets/img/ilus01.png);
+    }
 }
 .btn-tutorial{
     width: 6rem;

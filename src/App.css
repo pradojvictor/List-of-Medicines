@@ -4,18 +4,28 @@
   text-align: center;
 }
 
+body{
+  background-color: #e1ce8a;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+
 .div-container {
-  width: 100vw;
+  max-width: 1440px;
+  margin: auto;
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #e1ce8a;
+  overflow: hidden;
 }
 
 .div-header {
   border-radius: 1rem;
-  width: 95vw;
+  width: 95vh;
   margin-top: .5rem;
   height: 25vh;
   background-image: url(../src/assets/img/ilus01.png);
@@ -29,7 +39,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 1rem;
-  width: 92vw;
+  width: 92vh;
   height: 70vh;
   overflow-x: hidden;
   margin-bottom: 1rem;
@@ -45,14 +55,14 @@
   background: rgba(255, 255, 255, 0.30);
   backdrop-filter: blur(8.8px);
   -webkit-backdrop-filter: blur(8.8px);
-  width: 85vw;
+  width: 85vh;
   height: 1.9rem;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
   overflow: hidden;
 }
 .card-medicines:hover {
   background: rgba(255, 255, 255, 0.30);
-  width: 85vw;
+  width: 85vh;
   transition: 0.5s;
   height: 15rem;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
@@ -391,7 +401,7 @@ ul{
 
 
 .div-container-search {
-  width: 80vw;
+  width: 80vh;
   margin: auto;
   display: flex;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
@@ -426,6 +436,7 @@ ul{
   /* border: 1px solid #4A90E2;  */
   /* color: #4A90E2; */
 }
+
 
 
 

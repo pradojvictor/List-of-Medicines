@@ -22,7 +22,8 @@ export default function FaqCard({ title, children }) {
 useLayoutEffect(() => {
     const el = contentRef.current;
     if (!el) return;
-    const timeout = setTimeout(() => {
+
+    const measure = () => {
         if (isOpen) {
             el.style.maxHeight = `${el.scrollHeight}px`;
             el.style.opacity = '1';
@@ -30,8 +31,10 @@ useLayoutEffect(() => {
             el.style.maxHeight = '0px';
             el.style.opacity = '0';
         }
-    }, 50);
-    return () => clearTimeout(timeout);
+    };
+    const frameId = requestAnimationFrame(measure);
+    
+    return () => cancelAnimationFrame(frameId);
 }, [isOpen, children]);
 
     return (

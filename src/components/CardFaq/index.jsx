@@ -11,7 +11,7 @@ useLayoutEffect(() => {
     const el = contentRef.current;
     if (!el) return;
 
-    const updateHeight = () => {
+    const measure = () => {
         if (isOpen) {
             el.style.maxHeight = `${el.scrollHeight}px`;
             el.style.opacity = '1';
@@ -20,13 +20,13 @@ useLayoutEffect(() => {
             el.style.opacity = '0';
         }
     };
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
+    const frameId = requestAnimationFrame(measure);
+    
+    return () => cancelAnimationFrame(frameId);
 }, [isOpen, children]);
 
     return (
-        <div className='div-card' translate="no">
+        <div className='div-card'>
             <div className='card-title'>
                 <p>{title}</p>
                 <button

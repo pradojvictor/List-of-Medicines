@@ -21,12 +21,12 @@ function App() {
   const [isActive, setIsActive] = useState(false)
   const onMenu = () => setIsActive(!isActive)
 
-  window.addEventListener('load', () => {
-    const loader = document.querySelector('.loader');
-    setTimeout(() => {
-        loader.classList.add('loader-finish');
-    }, 4000);
-});
+//   window.addEventListener('load', () => {
+//     const loader = document.querySelector('.loader');
+//     setTimeout(() => {
+//         loader.classList.add('loader-finish');
+//     }, 4000);
+// });
 
   function handleToggle() {
     setToggle(toggle => !toggle);
@@ -59,9 +59,21 @@ function App() {
     }
   };
 
-  useEffect(() => {
+useEffect(() => {
     fetchMedicamentos();
-  }, []);
+    const loader = document.querySelector('.loader');
+    const handleFinish = () => {
+        setTimeout(() => {
+            if (loader) loader.classList.add('loader-finish');
+        }, 4000);
+    };
+    if (document.readyState === 'complete') {
+        handleFinish();
+    } else {
+        window.addEventListener('load', handleFinish);
+        return () => window.removeEventListener('load', handleFinish);
+    }
+}, []);
 
   if (loading) {
     return <div className="loader">

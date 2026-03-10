@@ -1,9 +1,16 @@
+.div-container {
+  visibility: hidden; 
+}
+.loader-finish ~ .div-container, 
+body:not(:has(.loader)) .div-container {
+  visibility: visible;
+}
+
 * {
   margin: 0;
   padding: 0;
   text-align: center;
 }
-
 body{
   background-color: #e1ce8a;
   margin: 0;
@@ -11,7 +18,6 @@ body{
   display: flex;
   justify-content: center;
 }
-
 
 .div-container {
   margin: auto;

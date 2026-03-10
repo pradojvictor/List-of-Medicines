@@ -7,9 +7,22 @@ export default function FaqCard({ title, children }) {
     const toggleOpen = () => setIsOpen(!isOpen);
     const contentRef = useRef(null);
 
-    useEffect(() => {
-        const el = contentRef.current;
-        if (!el) return;
+    // useEffect(() => {
+    //     const el = contentRef.current;
+    //     if (!el) return;
+    //     if (isOpen) {
+    //         el.style.maxHeight = el.scrollHeight + 'px';
+    //         el.style.opacity = '1';
+    //     } else {
+    //         el.style.maxHeight = '0px';
+    //         el.style.opacity = '0';
+    //     }
+    // }, [isOpen]);
+
+useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+    requestAnimationFrame(() => {
         if (isOpen) {
             el.style.maxHeight = el.scrollHeight + 'px';
             el.style.opacity = '1';
@@ -17,7 +30,8 @@ export default function FaqCard({ title, children }) {
             el.style.maxHeight = '0px';
             el.style.opacity = '0';
         }
-    }, [isOpen]);
+    });
+}, [isOpen]);
 
     return (
         <div className='div-card'>

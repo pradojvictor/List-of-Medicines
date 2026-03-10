@@ -1,10 +1,10 @@
-/* .div-container {
+.div-container {
   visibility: hidden; 
 }
 .loader-finish ~ .div-container, 
 body:not(:has(.loader)) .div-container {
   visibility: visible;
-} */
+}
 
 * {
   margin: 0;
@@ -21,6 +21,7 @@ body{
 
 .div-container {
   margin: auto;
+  /* max-width: 1440px; */
   height: 100vh;
   display: flex;
   align-items: center;
@@ -30,7 +31,7 @@ body{
 
 .div-header {
   border-radius: 1rem;
-  width: 95%;
+  width: 95vw;
   margin-top: .5rem;
   height: 25vh;
   background-image: url(../src/assets/img/ilus01.png);
@@ -44,7 +45,7 @@ body{
   background-size: cover;
   background-position: center;
   border-radius: 1rem;
-  width: 92%;
+  width: 92vw;
   height: 70vh;
   overflow-x: hidden;
   margin-bottom: 1rem;
@@ -60,14 +61,14 @@ body{
   background: rgba(255, 255, 255, 0.30);
   backdrop-filter: blur(8.8px);
   -webkit-backdrop-filter: blur(8.8px);
-  width: 85%;
+  width: 85vw;
   height: 1.9rem;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
   overflow: hidden;
 }
 .card-medicines:hover {
   background: rgba(255, 255, 255, 0.30);
-  width: 85%;
+  width: 85vw;
   transition: 0.5s;
   height: 15rem;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
@@ -406,7 +407,7 @@ ul{
 
 
 .div-container-search {
-  width: 80%;
+  width: 80vw;
   margin: auto;
   display: flex;
   border-radius: 1rem 1rem 0.5rem 0.5rem;

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { gifs } from './assets';
 import FaqMenu from './components/FaqMenu';
 import Carousel from './components/Carousel';
+import MedicineCard from './components/MedicineCard';
 
 function App() {
   const [medicines, setMedicines] = useState([]);
@@ -19,14 +20,7 @@ function App() {
   const [toggle, setToggle] = useState(true);
 
   const [isActive, setIsActive] = useState(false)
-  const onMenu = () => setIsActive(!isActive)
-
-//   window.addEventListener('load', () => {
-//     const loader = document.querySelector('.loader');
-//     setTimeout(() => {
-//         loader.classList.add('loader-finish');
-//     }, 4000);
-// });
+  const onMenu = () => setIsActive(!isActive);
 
   function handleToggle() {
     setToggle(toggle => !toggle);
@@ -141,40 +135,10 @@ useEffect(() => {
           <h3>ultima atualização {hour}</h3>
         </div>
         <div className='div-list'>
-          {medicinesFiltered.map((med, id) => (
-            <div key={id} className='card-medicines'>
-              <p className='name'>{med.name}</p>
-              <div className='inf-medicines'>
-                <div className='inf-names'>
-                  <p>{med.namefantasiaone}</p>
-                  <p>{med.namefantasiatwo}</p>
-                </div>
-                <div className='inf-all'>
-                  <div className='inf-detal'>
-                    <p><strong>status:</strong></p>
-                    <p>{med.status}</p>
-                  </div>
-                  <div className='inf-detal'>
-                    <p><strong>entrada:</strong></p>
-                    <p>{med.entrada}</p>
-                  </div>
-                  <div className='inf-detal'>
-                    <p><strong>quantidade:</strong></p>
-                    <p>{med.quantidade}</p>
-                  </div>
-                  <div className='inf-detal'>
-                    <p><strong>dosagem:</strong></p>
-                    <p>{med.dosagem}</p>
-                  </div>
-                  <div className='inf-detal'>
-                    <p><strong>tipo:</strong></p>
-                    <p>{med.tipo}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+  {medicinesFiltered.map((med, id) => (
+    <MedicineCard key={id} med={med} />
+  ))}
+</div>
         <div>
            <Carousel autoplay autoplayInterval={5000}> 
             <div><img src="https://picsum.photos/1200/600?random=1" alt="Imagem 1" /></div> 

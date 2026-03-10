@@ -60,7 +60,7 @@
 .content-dynamic {
     max-height: 0;
     overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     opacity: 0;
     transition: max-height 400ms cubic-bezier(.2, .8, .2, 1), opacity 300ms ease;
     box-sizing: border-box;

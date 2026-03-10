@@ -1,10 +1,10 @@
-.div-container {
+/* .div-container {
   visibility: hidden; 
 }
 .loader-finish ~ .div-container, 
 body:not(:has(.loader)) .div-container {
   visibility: visible;
-}
+} */
 
 * {
   margin: 0;

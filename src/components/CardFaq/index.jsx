@@ -26,7 +26,7 @@ useLayoutEffect(() => {
 }, [isOpen, children]);
 
     return (
-        <div className='div-card'>
+        <div className='div-card' translate='no'>
             <div className='card-title'>
                 <p>{title}</p>
                 <button

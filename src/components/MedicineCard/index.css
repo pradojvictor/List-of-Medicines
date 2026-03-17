@@ -19,7 +19,6 @@
     width: 95%;
     transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
     border-radius: 1rem 1rem 0.5rem 0.5rem;
-
     text-transform: uppercase;
     margin-bottom: 0.2rem;
 }
@@ -36,7 +35,7 @@
 }
 
 .div-list{
-  padding-bottom: 10rem;
+  padding-bottom: 3.5rem;
 }
 .inf-detal{
   display: flex;

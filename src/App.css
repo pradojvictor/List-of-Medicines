@@ -4,204 +4,6 @@
   text-align: center;
 }
 
-.div-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #e1ce8a;
-}
-
-.div-header {
-  border-radius: 1rem;
-  width: 95vw;
-  margin-top: .5rem;
-  height: 25vh;
-  background-image: url(../src/assets/img/ilus01.png);
-  background-size: cover;
-  background-position: center;
-  box-shadow: 2px 2px 5px gray;
-}
-
-.list-container {
-  background-image: url(../src/assets/img/ilus02.png);
-  background-size: cover;
-  background-position: center;
-  border-radius: 1rem;
-  width: 92vw;
-  height: 70vh;
-  overflow-x: hidden;
-  margin-bottom: 1rem;
-  box-shadow: 2px 2px 5px gray;
-}
-
-p.name {
-  margin-bottom: 1rem;
-  text-transform: capitalize;
-}
-
-.div-title {
-  height: 7vh;
-  border-radius: .5rem;
-  margin-bottom: 2rem;
-  margin-top: .7rem;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-
-  h1 {
-    font-size: 2.8rem;
-    color: white;
-    text-shadow: 2px 2px 5px gray;
-  }
-}
-
-.div-update {
-  font-size: .7rem;
-  text-transform: uppercase;
-  color: white;
-  background-color: rgb(255, 113, 93);
-  border-radius: .9rem .9rem 0rem 0rem;
-  margin: .1rem;
-  margin-bottom: .5rem;
-}
-
-
-.inf-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 1rem;
-}
-
-.false-span-info {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background-color: rgba(255, 255, 255, .5);
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &:hover {
-    background-color: black;
-
-    svg {
-      fill: black;
-      width: 100%;
-      height: 100%;
-      transition: .3s;
-
-      &:hover {
-        fill: orange;
-      }
-    }
-  }
-}
-
-.true-span-info {
-  display: none;
-}
-
-.span-info {
-  position: absolute;
-  top: 4.3rem;
-  right: 2.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1010;
-  cursor: pointer;
-
-  &:hover {
-    background-color: black;
-
-    svg {
-      fill: black;
-      width: 100%;
-      height: 100%;
-      transition: .3s;
-
-      &:hover {
-        fill: orange;
-      }
-    }
-  }
-}
-
-ul {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(1rem);
-  -webkit-backdrop-filter: blur(1rem);
-  transform: translateX(100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.4s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-ul.active {
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.active {
-  transform: translateX(0);
-}
-
-.div-menu {
-  width: 80%;
-  height: 80%;
-  border-radius: 1rem;
-  background: url(../src/assets/img/ilus02.png);
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  transition-delay: 0.2s;
-}
-
-.active .div-menu {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.div-menu>* {
-  animation: fadeIn 0.8s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 
 .loader {
   width: 100vw;
@@ -335,6 +137,208 @@ ul.active {
 }
 
 
+.div-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #e1ce8a;
+}
+
+.div-header {
+  border-radius: 1rem;
+  width: 95vw;
+  margin-top: .5rem;
+  height: 25vh;
+  background-image: url(../src/assets/img/ilus01.png);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 2px 2px 5px gray;
+}
+
+.list-container {
+  background-image: url(../src/assets/img/ilus02.png);
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+  width: 92vw;
+  height: 70vh;
+  overflow-x: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 2px 2px 5px gray;
+}
+
+p.name {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.div-title {
+  height: 7vh;
+  border-radius: .5rem;
+  margin-bottom: 2rem;
+  margin-top: .7rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    font-size: 2.8rem;
+    color: white;
+    text-shadow: 2px 2px 5px gray;
+  }
+}
+
+.div-update {
+  font-size: .7rem;
+  text-transform: uppercase;
+  color: white;
+  background-color: rgb(255, 113, 93);
+  border-radius: .9rem .9rem 0rem 0rem;
+  margin: .1rem;
+  margin-bottom: .5rem;
+}
+
+
+.inf-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem;
+}
+
+.false-span-info {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: black;
+
+    svg {
+      fill: black;
+      width: 100%;
+      height: 100%;
+      transition: .3s;
+
+      &:hover {
+        fill: orange;
+      }
+    }
+  }
+}
+
+.true-span-info {
+  display: none;
+}
+
+.span-info {
+  position: absolute;
+  top: 5rem;
+  right: 3.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1010;
+  cursor: pointer;
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &:hover {
+    background-color: black;
+
+    svg {
+      fill: black;
+      width: 100%;
+      height: 100%;
+      transition: .3s;
+
+      &:hover {
+        fill: orange;
+      }
+    }
+  }
+}
+
+ul {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+  transform: translateX(100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+ul.active {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.active {
+  transform: translateX(0);
+}
+
+.div-menu {
+  width: 80%;
+  height: 80%;
+  border-radius: 1rem;
+  background: url(../src/assets/img/ilus02.png);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: 0.2s;
+}
+
+.active .div-menu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.div-menu>* {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .true {
   width: 5rem;
   height: 2rem;
@@ -415,20 +419,19 @@ ul.active {
   }
 }
 
-
 .div-container-search {
   width: 80vw;
   margin: auto;
   display: flex;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
   border: none;
-  height: 2rem;
+  height: 2.5rem;
   gap: .5rem;
   background-color: rgba(255, 255, 255, 0.767);
 
   svg {
     margin-left: .5rem;
-    margin-top: .3rem;
+    margin-top: .6rem;
     fill: black;
   }
 }
@@ -444,13 +447,12 @@ ul.active {
   text-align: left;
   background-color: transparent;
   font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .input-search:focus {
   outline: none;
   border: none;
-  /* border: 1px solid #4A90E2;  */
-  /* color: #4A90E2; */
 }
 
 
@@ -461,7 +463,7 @@ ul.active {
     right: 13%;
   }
 
-  .false-span-info{
+  .false-span-info {
     width: 2.5rem;
     height: 2.5rem;
   }
@@ -469,7 +471,7 @@ ul.active {
 
 @media screen and (min-width: 1000px) {
 
-  .false-span-info{
+  .false-span-info {
     width: 3rem;
     height: 3rem;
   }

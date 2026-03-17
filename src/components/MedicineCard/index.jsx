@@ -5,7 +5,6 @@ export default function MedicineCard({ med }) {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = useRef(null);
 
-    // Função para alternar o estado
     const toggleCard = () => setIsOpen(!isOpen);
 
     useLayoutEffect(() => {
@@ -13,7 +12,6 @@ export default function MedicineCard({ med }) {
         if (!content) return;
 
         if (isOpen) {
-            // Define a altura baseada no tamanho real do conteúdo interno
             content.style.maxHeight = `${content.scrollHeight}px`;
             content.style.opacity = '1';
         } else {
@@ -23,12 +21,12 @@ export default function MedicineCard({ med }) {
     }, [isOpen]);
 
     return (
-        <div 
-            className={`card-medicines ${isOpen ? 'active-card' : ''}`} 
+        <div
+            className={`card-medicines ${isOpen ? 'active-card' : ''}`}
             onClick={toggleCard}
+            translate='no'
         >
             <p className='name'>{med.name}</p>
-            
             <div ref={contentRef} className="inf-medicines-container">
                 <div className='inf-medicines'>
                     <div className='inf-names'>

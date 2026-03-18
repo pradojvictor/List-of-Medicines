@@ -1,5 +1,6 @@
 import { useState, useRef, useLayoutEffect } from 'react';
 import './index.css';
+import { Detail } from '../Detail';
 
 export default function MedicineCard({ med }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,9 +35,7 @@ export default function MedicineCard({ med }) {
                         <p>{med.namefantasiatwo}</p>
                     </div>
                     <div className='inf-all'>
-                        <Detail label="status" value={med.status} />
-                        <Detail label="entrada" value={med.entrada} />
-                        <Detail label="quantidade" value={med.quantidade} />
+                        <Detail label="status" value={med.status === 1 ? 'Disponível' : 'Em falta'} isStatus={true} />
                         <Detail label="dosagem" value={med.dosagem} />
                         <Detail label="tipo" value={med.tipo} />
                     </div>
@@ -46,12 +45,3 @@ export default function MedicineCard({ med }) {
     );
 }
 
-// Sub-componente interno para organizar as linhas de detalhe
-function Detail({ label, value }) {
-    return (
-        <div className='inf-detal'>
-            <p><strong>{label}:</strong></p>
-            <p>{value}</p>
-        </div>
-    );
-}

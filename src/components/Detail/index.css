@@ -1,0 +1,17 @@
+.inf-detal{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  p{
+    width: 7rem;
+    text-align: left;
+  }
+
+  .ativo{
+    color: green;
+  }
+  .inativo{
+    color: red;
+  }
+}

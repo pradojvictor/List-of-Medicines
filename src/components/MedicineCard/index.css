@@ -37,13 +37,3 @@
 .div-list{
   padding-bottom: 3.5rem;
 }
-.inf-detal{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-  p{
-    width: 7rem;
-    text-align: left;
-  }
-}

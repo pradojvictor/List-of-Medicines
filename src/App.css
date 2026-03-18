@@ -241,6 +241,40 @@ p.name {
   display: none;
 }
 
+
+/* .true-span-info-menu{
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &:hover {
+    background-color: black;
+
+    svg {
+      fill: black;
+      width: 100%;
+      height: 100%;
+      transition: .3s;
+
+      &:hover {
+        fill: orange;
+      }
+    }
+  }
+} */
+
+
 .span-info {
   position: absolute;
   top: 5rem;

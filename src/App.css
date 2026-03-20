@@ -146,15 +146,89 @@
   background-color: #e1ce8a;
 }
 
+.section-footer {
+  margin: 1rem;
+}
+
+.div-footer {
+  background-color: #e1ce8a;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: black;
+    text-align: left;
+  }
+
+  .text-inf {
+    font-size: .7rem;
+    font-weight: 500;
+    color: black;
+    text-align: justify;
+  }
+
+  .inf-footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #00000011;
+    border-radius: 1rem;
+    padding: .5rem;
+    height: auto;
+    width: auto;
+
+
+
+    span {
+      text-align: left;
+      font-size: .8rem;
+      cursor: pointer;
+      height: 1.5rem;
+      width: auto;
+      margin: .1rem;
+
+      .link-footer{
+      display: flex;
+      text-decoration: none;
+      }
+
+      .text-link{
+        color: black;
+        font-size: .7rem;
+      }
+      
+      p{
+        color: wheat;
+        font-size: 1rem;
+      }
+      svg {
+        display: block;
+        height: auto;
+        
+
+      }
+    }
+
+  }
+
+}
+
 .div-header {
   border-radius: 1rem;
   width: 95vw;
   margin-top: .5rem;
-  height: 25vh;
+  height: 30vh;
   background-image: url(../src/assets/img/ilus01.png);
   background-size: cover;
   background-position: center;
   box-shadow: 2px 2px 5px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .list-container {
@@ -181,14 +255,66 @@ p.name {
   margin-top: .7rem;
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 
   h1 {
-    font-size: 2.8rem;
+    font-size: 2rem;
     color: white;
     text-shadow: 2px 2px 5px gray;
   }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 5px gray;
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: white;
+    text-shadow: 2px 2px 5px gray;
+  }
+
 }
+
+
+.div-container-search {
+  width: 80vw;
+  display: flex;
+  border-radius: 1rem 1rem 0.5rem 0.5rem;
+  border: none;
+  height: 2.5rem;
+  gap: .5rem;
+  background-color: rgba(255, 255, 255, 0.767);
+
+  svg {
+    margin-left: .5rem;
+    margin-top: .6rem;
+    fill: black;
+  }
+}
+
+.div-container-search:hover {
+  width: 85vw;
+  background-color: rgba(255, 255, 255, 1);
+  transition: 0.5s;
+}
+
+.input-search {
+  border: none;
+  text-align: left;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.input-search:focus {
+  outline: none;
+  border: none;
+}
+
 
 .div-update {
   font-size: .7rem;
@@ -288,6 +414,7 @@ p.name {
   align-items: center;
   z-index: 1010;
   cursor: pointer;
+
   svg {
     width: 2rem;
     height: 2rem;
@@ -453,42 +580,6 @@ ul.active {
   }
 }
 
-.div-container-search {
-  width: 80vw;
-  margin: auto;
-  display: flex;
-  border-radius: 1rem 1rem 0.5rem 0.5rem;
-  border: none;
-  height: 2.5rem;
-  gap: .5rem;
-  background-color: rgba(255, 255, 255, 0.767);
-
-  svg {
-    margin-left: .5rem;
-    margin-top: .6rem;
-    fill: black;
-  }
-}
-
-.div-container-search:hover {
-  width: 85vw;
-  background-color: rgba(255, 255, 255, 1);
-  transition: 0.5s;
-}
-
-.input-search {
-  border: none;
-  text-align: left;
-  background-color: transparent;
-  font-weight: 500;
-  font-size: 1.2rem;
-}
-
-.input-search:focus {
-  outline: none;
-  border: none;
-}
-
 
 
 @media screen and (min-width: 500px) {
@@ -501,6 +592,33 @@ ul.active {
     width: 2.5rem;
     height: 2.5rem;
   }
+
+  .div-title {
+    h1 {
+      font-size: 300%;
+      color: white;
+      text-shadow: 2px 2px 5px gray;
+    }
+
+    h2 {
+      font-size: 150%;
+      font-weight: 700;
+      color: white;
+      text-shadow: 2px 2px 5px gray;
+    }
+
+    h3 {
+      font-size: 150%;
+      color: white;
+      text-shadow: 2px 2px 5px gray;
+    }
+  }
+
+  .div-container-search {
+    margin-top: 1rem;
+  }
+
+
 }
 
 @media screen and (min-width: 1000px) {
@@ -508,5 +626,30 @@ ul.active {
   .false-span-info {
     width: 3rem;
     height: 3rem;
+  }
+
+  .div-title {
+    h1 {
+      font-size: 300%;
+      color: white;
+      text-shadow: 2px 2px 5px gray;
+    }
+
+    h2 {
+      font-size: 150%;
+      font-weight: 700;
+      color: white;
+      text-shadow: 2px 2px 5px gray;
+    }
+
+    h3 {
+      font-size: 150%;
+      color: white;
+      text-shadow: 2px 2px 5px gray;
+    }
+  }
+
+  .div-container-search {
+    margin-top: 1rem;
   }
 }

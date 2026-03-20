@@ -324,6 +324,10 @@ p.name {
   border-radius: .9rem .9rem 0rem 0rem;
   margin: .1rem;
   margin-bottom: .5rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

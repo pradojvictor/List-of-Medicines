@@ -1,6 +1,6 @@
 import { useState, useRef, useLayoutEffect } from 'react';
-import './index.css';
 import { Detail } from '../Detail';
+import './index.css';
 
 export default function MedicineCard({ med }) {
     const [isOpen, setIsOpen] = useState(false);

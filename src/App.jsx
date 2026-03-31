@@ -51,8 +51,7 @@ function App() {
     onMenu(false);
 
     setTimeout(() => {
-      introJs().setOptions({
-
+      introJs.tour().setOptions({
         steps: [
           {
             element: '.div-header',
@@ -148,7 +147,7 @@ function App() {
   };
 
   const infFAq = () => {
-    introJs().setOptions({
+    introJs.tour().setOptions({
       steps: [
         {
           element: '#span-info',

@@ -1,4 +1,3 @@
-// src/utils/domUtils.js
 export function isElementScrollable(el, { vertical = true, horizontal = true } = {}) {
   if (!el || !(el instanceof HTMLElement)) return false;
 

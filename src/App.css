@@ -4,7 +4,6 @@
   text-align: center;
 }
 
-
 .loader {
   width: 100vw;
   height: 100vh;
@@ -136,7 +135,6 @@
   }
 }
 
-
 .div-container {
   width: 100vw;
   height: 100vh;
@@ -151,11 +149,11 @@
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza a section na tela */
+  align-items: center;
 }
 
 .section-footer {
-  max-width: 800px; /* Evita que o texto fique largo demais */
+  max-width: 800px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -166,7 +164,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: #000;
-  text-align: left; /* Garante o título à esquerda */
+  text-align: left;
 }
 
 .text-inf {
@@ -214,7 +212,6 @@
   opacity: 0.8;
   text-align: center;
 }
-
 
 .div-header {
   border-radius: 1rem;
@@ -278,7 +275,6 @@ p.name {
   }
 
 }
-
 
 .div-container-search {
   width: 80vw;
@@ -550,6 +546,39 @@ ul.active {
   }
 }
 
+/* Fundo e bordas da caixa de diálogo */
+.introjs-tooltip {
+  background-color: #f7ecc7;
+  border-radius: .5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Título do passo */
+.introjs-tooltiptext {
+  color: black;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Botão de "Próximo" customizado */
+.introjs-nextbutton {
+  background-color: #eb8325 !important;
+  color: white !important;
+  text-shadow: none;
+  border: none;
+}
+
+/* Botão de "Voltar" */
+.introjs-prevbutton {
+  color: gray !important;
+}
+
+/* A setinha que aponta para o elemento */
+.introjs-arrow.bottom {
+  border-bottom-color:  #f7ecc7;
+}
+
 
 
 @media screen and (min-width: 500px) {
@@ -587,8 +616,6 @@ ul.active {
   .div-container-search {
     margin-top: 1rem;
   }
-
-
 }
 
 @media screen and (min-width: 1000px) {

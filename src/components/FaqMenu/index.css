@@ -127,7 +127,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   visibility: visible;
   opacity: 1;
   transition: opacity 0.4s ease;
@@ -137,14 +136,11 @@
 .active-div-modal .section-slider-container-active {
   opacity: 1;
   transform: translateY(0);
-  /* Volta para a posição original */
   pointer-events: auto;
   transition-delay: 0.3s;
-  /* Espera um pouco a modal abrir para começar */
 }
 
 .inactive-div-modal {
-  /* display: none; */
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.4s ease, visibility 0.4s;
@@ -166,14 +162,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   opacity: 0;
   transform: translateY(20px);
-  /* Começa um pouco abaixo */
   transition: all 0.5s ease-in-out;
-  /* Tempo da animação */
   pointer-events: none;
-  /* Evita cliques enquanto invisível */
 }
 
 .section-slider-container-inactive{
@@ -182,4 +174,38 @@
 
 .active-slide{
   display: none;
+}
+
+.div-duvidas{
+  margin: 1rem 0 0 0;
+}
+
+.faq-email{
+  text-decoration: none;
+  color: black;
+  font-weight: 500; 
+
+  &:hover {
+    color: orange;
+    transition: .3s;
+  }
+}
+
+.div-autor{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e1ce8a;
+  border-radius: 1rem;
+  padding: 1rem;  
+  margin: 1rem 0 0 0;
+
+  p {
+    margin: 0.5rem 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 400;
+  }
 }

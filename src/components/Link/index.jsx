@@ -1,6 +1,6 @@
-export default function Link({ href, children, className }) {
+export default function Link({ href, children, className, id }) {
   return (
-    <a className={className} href={href} target="_blank" rel="noopener noreferrer">
+    <a className={className} id={id} href={href} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
   );

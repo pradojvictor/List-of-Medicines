@@ -153,7 +153,8 @@ function App() {
           element: '#span-info',
           intro: 'Dúvidas e suporte, aqui!',
           position: 'top',
-          scrollTo: 'tooltip'
+          scrollTo: 'tooltip',
+          scrollToElement: false
         },
       ],
       doneLabel: 'Entendi!'

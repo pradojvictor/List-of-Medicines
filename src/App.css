@@ -591,12 +591,6 @@ ul.active {
   scroll-margin-bottom: 100px; 
 }
 
-/* Classe que o Intro.js adiciona automaticamente ao elemento em foco */
-.introjs-showElement#span-info {
-  scroll-margin-bottom: 500px !important; /* "Engana" o navegador dizendo que tem muito espaço abaixo */
-  position: relative !important; /* Tenta forçar uma posição que não dispare scroll */
-}
-
 @media screen and (min-width: 1400px) {
  
   .div-header{

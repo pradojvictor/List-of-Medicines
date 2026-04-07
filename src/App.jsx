@@ -158,14 +158,7 @@ function App() {
         },
       ],
       doneLabel: 'Entendi!',
-      scrollToElement: false,
-      disableInteraction: true
-    }).onBeforeChange(function(targetElement) {
-  // Se o elemento for o nosso span-info, a gente trava o scroll do corpo
-  if (targetElement.id === 'span-info') {
-    window.scrollTo(0, 0); // Mantém no topo (ou na posição atual)
-  }
-}).start();
+    }).start();
   }
 
   function handleToggle() {

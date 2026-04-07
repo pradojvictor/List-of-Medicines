@@ -234,13 +234,6 @@
   align-items: center;
 }
 
-.div-list-span{
-overflow: hidden;
-margin-bottom: 1rem;
-background-color: transparent;
-border-radius: 1rem;
-}
-
 .list-container {
   background-image: url(../src/assets/imgs/ilus02.png);
   background-size: cover;

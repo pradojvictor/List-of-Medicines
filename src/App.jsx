@@ -145,7 +145,6 @@ function App() {
     }, 300);
 
   };
-
   const infFAq = () => {
     introJs.tour().setOptions({
       steps: [
@@ -153,13 +152,6 @@ function App() {
           element: '#span-info',
           intro: 'Dúvidas e suporte, aqui!',
           position: 'top',
-          scrollTo: 'tooltip',
-          scrollToElement: false
-        },
-         {
-          element: '.div-list-span',
-          intro: 'Dúvidas e suporte, aqui!',
-          position: 'floating',
           scrollTo: 'tooltip',
           scrollToElement: false
         },
@@ -342,7 +334,6 @@ function App() {
             </div>
           </section>
         </div>
-        <div className='div-list-span'>
 
           <div className='list-container'>
             <div className='div-update'>
@@ -355,7 +346,6 @@ function App() {
             </div>
             <div>
             </div>
-          </div>
 
         <span className={`${isActive}-span-info`} id='span-info' onClick={onMenu}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -363,7 +353,6 @@ function App() {
           </svg>
         </span>
         </div>
-
 
         <ul className={isActive ? "active" : ""}>
           <div className='div-menu'>

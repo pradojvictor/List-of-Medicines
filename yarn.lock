@@ -1390,7 +1390,7 @@
     picomatch "^4.0.2"
     resolve-from "^5.0.0"
 
-"@vercel/node@5.7.1", "@vercel/node@^5.7.1":
+"@vercel/node@5.7.1":
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/@vercel/node/-/node-5.7.1.tgz#db8c03d7c2bd594ecbc010989a875faa6f7ae621"
   integrity sha512-R4FN56rj47VQTmqPDklsKJhuTkat0eGPKHg3Sx1Tp2gTkmyFgXitGUj8pAS3Dnm/MjFauU1FFPpFKxzMic6RMw==

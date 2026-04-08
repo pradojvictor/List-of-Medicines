@@ -147,6 +147,7 @@ function App() {
 
   };
 
+
   function handleToggle() {
     setToggle(toggle => !toggle);
     setShowOnlyActive(prev => !prev);
@@ -157,61 +158,30 @@ function App() {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 
-  const medicinesFiltered = medicines
+const medicinesFiltered = (medicines || [])
     .filter(med => showallMedicines ? (med.status) === 1 : true)
-    .filter(med => removeAccents(med.name.toLowerCase()).includes(removeAccents(search.toLowerCase())));
+    .filter(med => removeAccents((med.name || '').toLowerCase()).includes(removeAccents(search.toLowerCase())));
 
-  const GIST_ID = import.meta.env.VITE_GITHUB_GIST_ID;
-  const FILENAME = import.meta.env.VITE_GITHUB_FILENAME;
-  const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
-
-  const fetchMedicamentos = async () => {
+const fetchMedicamentos = async () => {
     try {
       setLoading(true);
       setErro(null);
 
       const timer = new Promise((resolve) => setTimeout(resolve, 5000));
+      const apiCall = axios.get("/api/getMedicamentos", { timeout: 10000 });
+      const [response] = await Promise.all([apiCall, timer]);
+      
+      setMedicines(response.data.medicamentos);
+      setHour(response.data.hora);
 
-      if (!GITHUB_TOKEN) {
-        throw new Error('GitHub token error');
-      }
-
-      const apiUrl = `https://api.github.com/gists/${GIST_ID}`;
-      const headers = { Authorization: `token ${GITHUB_TOKEN}` };
-
-      const apiCall = axios.get(apiUrl, { headers, timeout: 10000 });
-      const [apiResponse] = await Promise.all([apiCall, timer]);
-      const gist = apiResponse.data;
-
-      const file = gist.files && (gist.files[FILENAME] || Object.values(gist.files)[0]);
-      if (!file) throw new Error('Arquivo não encontrado no gist');
-
-      let jsonText = null;
-
-      if (file.truncated) {
-        if (!file.raw_url) throw new Error('Arquivo truncado e raw_url não disponível');
-        const rawResp = await axios.get(file.raw_url, { headers, timeout: 10000 });
-        jsonText = typeof rawResp.data === 'string' ? rawResp.data : JSON.stringify(rawResp.data);
-      } else if (file.content && file.content.trim().length) {
-        jsonText = file.content;
-      } else if (file.raw_url) {
-        const rawResp = await axios.get(file.raw_url, { headers, timeout: 10000 });
-        jsonText = typeof rawResp.data === 'string' ? rawResp.data : JSON.stringify(rawResp.data);
-      } else {
-        throw new Error('Conteúdo do arquivo não disponível');
-      }
-
-      const parsed = JSON.parse(jsonText);
-
-      setMedicines(parsed.medicamentos || parsed);
-      setHour(parsed.hora || gist.updated_at || null);
     } catch (error) {
-      setErro('Erro ao buscar medicamentos. Verifique token e permissões do Gist.');
+      setErro('Erro ao buscar medicamentos. Verifique a conexão.');
       console.error('fetchMedicamentos error:', error);
     } finally {
       setLoading(false);
     }
   };
+
 
   useEffect(() => {
     fetchMedicamentos();

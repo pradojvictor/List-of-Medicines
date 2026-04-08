@@ -1,4 +1,4 @@
-import giftLoadPrincipal from '../assets/gifs/gift-load-principal.webp';
+import giftLoadPrincipal from '../assets/gifs/01.webp';
 
 export const gifs = {
     giftLoadPrincipal,

@@ -1,8 +1,8 @@
 import { Children, useState } from 'react';
 import FaqCard from '../CardFaq';
 import CardSimple from '../CardSimple';
-import './index.css';
 import Link from '../Link';
+import './index.css';
 
 export default function FaqMenu({ onClosed, classfaq, Children, emailLink }) {
 

@@ -18,7 +18,7 @@
   left: 0;
   z-index: 999;
   overflow: hidden;
-  background-image: url(../src/assets/imgs/ilus01.png);
+  background-image: url(../src/assets/logos/logo-caps-leste-header-principal.webp);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -224,7 +224,7 @@
   width: 95vw;
   margin-top: .5rem;
   height: 30vh;
-  background-image: url(../src/assets/imgs/ilus01.png);
+  background-image: url(../src/assets/logos/logo-caps-leste-header-principal.webp);
   background-size: cover;
   background-position: center;
   box-shadow: 2px 2px 5px gray;
@@ -235,7 +235,7 @@
 }
 
 .list-container {
-  background-image: url(../src/assets/imgs/ilus02.png);
+  background-image: url(../src/assets/logos/logo-caps-leste-header-faq-secundario.webp);
   background-size: cover;
   background-position: center;
   border-radius: 1rem;
@@ -443,7 +443,7 @@ ul.active {
   width: 80%;
   height: 80%;
   border-radius: 1rem;
-  background: url(../src/assets/imgs/ilus02.png);
+  background: url(../src/assets/logos/logo-caps-leste-header-faq-secundario.webp);
   background-size: cover;
   background-position: center;
   overflow: hidden;

@@ -226,7 +226,7 @@ const fetchMedicamentos = async () => {
   if (loading) {
     return <div className="loader">
       <div className='div-inf-gif'>
-        <img className='git-img' src={gifs.img03} alt="Gif" />
+        <img className='git-img' src={gifs.giftLoadPrincipal} alt="Giff de uma garota rindo e acenando" />
         <div className="loader-text">
           <span className="char">C</span>
           <span className="char">A</span>

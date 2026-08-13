@@ -1,0 +1,42 @@
+/*
+ * Tema do tour guiado. Carregado sob demanda junto com o intro.js
+ * (ver handleStartGuide em src/App.jsx).
+ *
+ * O @import abaixo garante que o CSS da biblioteca venha ANTES das
+ * customizações — se elas fossem importadas separadamente, o CSS da lib
+ * seria injetado depois e venceria por ordem de cascata.
+ */
+@import 'intro.js/introjs.css';
+
+/* Fundo e bordas da caixa de diálogo */
+.introjs-tooltip {
+  background-color: #f7ecc7;
+  border-radius: .5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do passo */
+.introjs-tooltiptext {
+  color: black;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Botão de "Próximo" customizado */
+.introjs-nextbutton {
+  background-color: #eb8325 !important;
+  color: white !important;
+  text-shadow: none;
+  border: none;
+}
+
+/* Botão de "Voltar" */
+.introjs-prevbutton {
+  color: gray !important;
+}
+
+/* A setinha que aponta para o elemento */
+.introjs-arrow.bottom {
+  border-bottom-color: #f7ecc7;
+}

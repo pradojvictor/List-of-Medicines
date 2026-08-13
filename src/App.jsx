@@ -1,13 +1,9 @@
-import { useEffect, useState, useRef } from 'react'
-import axios from 'axios';
-import { gifs } from './assets';
+import { useEffect, useState } from 'react'
 import FaqMenu from './components/FaqMenu';
+import Loader from './components/Loader';
 import MedicineCard from './components/MedicineCard';
-import { isElementScrollable } from './utils/domUtils';
 import Link from './components/Link';
-import introJs from 'intro.js';
 import ModalFAQ from './components/ModalFAQ';
-import 'intro.js/introjs.css';
 import './App.css';
 
 function App() {
@@ -25,8 +21,6 @@ function App() {
 
   const [isActive, setIsActive] = useState(false)
   const onMenu = () => setIsActive(!isActive);
-  const listRef = useRef(null);
-  const [listScrollable, setListScrollable] = useState(false);
 
   const numero = '5586994478042';
   const mensagem = encodeURIComponent('Olá, gostaria de obter informações sobre os medicamentos disponíveis no site do CAPS II Leste. Poderiam me ajudar?');
@@ -48,8 +42,14 @@ function App() {
     }
   };
 
-  const handleStartGuide = () => {
+  const handleStartGuide = async () => {
     onMenu(false);
+
+    // O intro.js (~65KB) só é baixado quando o usuário abre o tour.
+    const [{ default: introJs }] = await Promise.all([
+      import('intro.js'),
+      import('./styles/introjs-theme.css'),
+    ]);
 
     setTimeout(() => {
       introJs.tour().setOptions({
@@ -163,21 +163,26 @@ const medicinesFiltered = (medicines || [])
     .filter(med => removeAccents((med.name || '').toLowerCase()).includes(removeAccents(search.toLowerCase())));
 
 const fetchMedicamentos = async () => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
     try {
       setLoading(true);
       setErro(null);
 
-      const timer = new Promise((resolve) => setTimeout(resolve, 5000));
-      const apiCall = axios.get("/api/getMedicamentos", { timeout: 10000 });
-      const [response] = await Promise.all([apiCall, timer]);
-      
-      setMedicines(response.data.medicamentos);
-      setHour(response.data.hora);
+      const response = await fetch('/api/getMedicamentos', { signal: controller.signal });
+      if (!response.ok) throw new Error(`A API respondeu ${response.status}`);
+
+      const data = await response.json();
+
+      setMedicines(data.medicamentos);
+      setHour(data.hora);
 
     } catch (error) {
       setErro('Erro ao buscar medicamentos. Verifique a conexão.');
       console.error('fetchMedicamentos error:', error);
     } finally {
+      clearTimeout(timeoutId);
       setLoading(false);
     }
   };
@@ -185,68 +190,11 @@ const fetchMedicamentos = async () => {
 
   useEffect(() => {
     fetchMedicamentos();
-    const hideLoader = () => {
-      const loader = document.querySelector('.loader');
-      if (loader) {
-        setTimeout(() => {
-          loader.classList.add('loader-finish');
-        }, 4000);
-      }
-    };
-    if (document.readyState === 'complete') {
-      hideLoader();
-    } else {
-      window.addEventListener('load', hideLoader);
-      return () => window.removeEventListener('load', hideLoader);
-    }
   }, []);
-
-  useEffect(() => {
-    const el = listRef.current;
-    if (!el) return;
-
-    const check = () => setListScrollable(isElementScrollable(el));
-
-    check();
-
-    let ro;
-    if (typeof ResizeObserver !== 'undefined') {
-      ro = new ResizeObserver(check);
-      ro.observe(el);
-    } else {
-      window.addEventListener('resize', check);
-    }
-
-    return () => {
-      if (ro) ro.disconnect();
-      else window.removeEventListener('resize', check);
-    };
-  }, [medicines]);
-
-  if (loading) {
-    return <div className="loader">
-      <div className='div-inf-gif'>
-        <img className='git-img' src={gifs.giftLoadPrincipal} alt="Giff de uma garota rindo e acenando"/>
-        <div className="loader-text">
-          <span className="char">C</span>
-          <span className="char">A</span>
-          <span className="char">P</span>
-          <span className="char">S</span>
-          <span className='space-char'></span>
-          <span className="char">II</span>
-          <span className='space-char'></span>
-          <span className="char">L</span>
-          <span className="char">E</span>
-          <span className="char">S</span>
-          <span className="char">T</span>
-          <span className="char">E</span>
-        </div>
-      </div>
-    </div>;
-  }
 
   return (
     <div>
+      <Loader loading={loading} />
       <div className='div-container'>
         <div className='div-header'>
           <div className='div-title'>
@@ -286,9 +234,9 @@ const fetchMedicamentos = async () => {
             <div className='div-update'>
               <h3>ultima atualização {hour}</h3>
             </div>
-            <div className='div-list' ref={listRef}>
-              {medicinesFiltered.map((med, id) => (
-                <MedicineCard key={id} med={med} />
+            <div className='div-list'>
+              {medicinesFiltered.map((med) => (
+                <MedicineCard key={`${med.name}|${med.dosagem}|${med.tipo}`} med={med} />
               ))}
             </div>
             <div>
@@ -303,7 +251,7 @@ const fetchMedicamentos = async () => {
 
         <ul className={isActive ? "active" : ""}>
           <div className='div-menu'>
-            <FaqMenu Children={handleStartGuide} onClosed={onMenu} classfaq={`${true}-span-info-menu`} emailLink={validarLink(urlFormated(SameEmail))} />
+            <FaqMenu onStartGuide={handleStartGuide} onClosed={onMenu} classfaq={`${true}-span-info-menu`} emailLink={validarLink(urlFormated(SameEmail))} />
           </div>
         </ul>
       </div>

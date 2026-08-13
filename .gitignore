@@ -17,8 +17,9 @@ dist-ssr
 .env.local
 .env
 .env*
-.cloude
-.cloude*
+
+# Config local do Claude Code
+.claude/
 
 # Editor directories and files
 .vscode/*

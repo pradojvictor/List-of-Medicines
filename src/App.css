@@ -23,8 +23,13 @@
 }
 
 .div-container {
-  width: 100vw;
-  height: 100vh;
+  /* 100vw inclui a largura da barra de rolagem e gerava scroll horizontal. */
+  width: 100%;
+  /* dvh acompanha a barra de endereço do navegador móvel e o teclado; a
+     linha em vh fica como fallback para navegadores antigos.
+     min-height em vez de height para o conteúdo poder crescer sem cortar. */
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -104,7 +109,10 @@
   border-radius: 1rem;
   width: 95vw;
   margin-top: .5rem;
-  height: 30vh;
+  /* min-height: com altura fixa o cabeçalho não comportava título + busca em
+     telas baixas e o "CAPS II LESTE" era cortado no topo. */
+  min-height: 30vh;
+  min-height: 30dvh;
   background-image: url(../src/assets/logos/logo-caps-leste-header-principal.webp);
   background-size: cover;
   background-position: center;
@@ -122,7 +130,11 @@
   border-radius: 1rem;
   width: 92vw;
   height: 70vh;
+  height: 70dvh;
+  overflow-y: auto;
   overflow-x: hidden;
+  /* Impede que a página role junto ao chegar no fim da lista. */
+  overscroll-behavior: contain;
   margin-bottom: 1rem;
   box-shadow: 2px 2px 5px gray;
 }
@@ -133,7 +145,10 @@ p.name {
 }
 
 .div-title {
-  height: 7vh;
+  /* min-height em vez de height: são três títulos aqui dentro e uma altura
+     fixa os cortava em telas baixas (celular com o teclado aberto). */
+  min-height: 7vh;
+  min-height: 7dvh;
   border-radius: .5rem;
   margin-bottom: 2rem;
   margin-top: .7rem;
@@ -179,10 +194,14 @@ p.name {
   }
 }
 
-.div-container-search:hover {
-  width: 85vw;
-  background-color: rgba(255, 255, 255, 1);
-  transition: 0.5s;
+/* Só onde existe ponteiro de verdade. No celular o toque dispara :hover e ele
+   fica grudado, fazendo a barra de busca mudar de largura depois do toque. */
+@media (hover: hover) {
+  .div-container-search:hover {
+    width: 85vw;
+    background-color: rgba(255, 255, 255, 1);
+    transition: 0.5s;
+  }
 }
 
 .input-search {
@@ -200,6 +219,10 @@ p.name {
 
 
 .div-update {
+  /* Fica visível durante o scroll em vez de sumir junto com a lista. */
+  position: sticky;
+  top: 0;
+  z-index: 1;
   font-size: .7rem;
   text-transform: uppercase;
   color: white;
@@ -291,10 +314,9 @@ p.name {
 
 ul {
   position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 100%;
+  /* inset em vez de 100vw/100vh: cobre exatamente a viewport visível, sem
+     sobrar por baixo da barra de endereço nem estourar na barra de rolagem. */
+  inset: 0;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(1rem);
   -webkit-backdrop-filter: blur(1rem);
@@ -324,7 +346,11 @@ ul.active {
   width: 80%;
   height: 80%;
   border-radius: 1rem;
-  background: url(../src/assets/logos/logo-caps-leste-header-faq-secundario.webp);
+  /* Véu branco sobre a ilustração: sem ele o texto do FAQ competia com uma
+     arte muito saturada e ficava difícil de ler. */
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+    url(../src/assets/logos/logo-caps-leste-header-faq-secundario.webp);
   background-size: cover;
   background-position: center;
   overflow: hidden;

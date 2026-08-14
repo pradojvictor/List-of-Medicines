@@ -1,17 +1,27 @@
 .container-faq {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* Era `justify-content: center` + `margin-top: 3rem`: a margem estourava a
+     altura do pai e, com uma aba aberta, o card "Autor" ficava cortado sem
+     como rolar até ele (centralizar conteúdo que transborda impede o scroll). */
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 3rem;
+  padding: 3.75rem 0 1.5rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .true-span-info-menu {
   position: absolute;
   top: .4rem;
   right: .4rem;
+  z-index: 2;
+  /* Agora é um <button>: zera a aparência nativa. */
+  border: none;
+  padding: 0;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   width: 3rem;
@@ -53,95 +63,38 @@
   background-color: #e1ce8a;
   border-radius: 1rem;
   width: 90%;
-  height: 3rem;
+  min-height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: .5rem;
   cursor: pointer;
-  padding: 0;
+  padding: .6rem 1rem;
   border: none;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  /* O hover levava o svg de 2rem para 90% do botão: o ícone dava um salto e
+     empurrava o texto. Agora só a cor muda. */
+  transition: background-color .2s ease;
 
   svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    fill: currentColor;
   }
 
   &:hover {
-    background-color: #e1ce8a;
+    background-color: #d4bd6c;
+  }
 
-    svg {
-      fill: black;
-      width: 90%;
-      height: 90%;
-      transition: .3s;
-
-      &:hover {
-        fill: black;
-      }
-    }
+  &:focus-visible {
+    outline: 2px solid #eb8325;
+    outline-offset: 2px;
   }
 }
 
-.active-div-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #e1ce8a;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.4s ease;
-
-}
-
-.active-div-modal .section-slider-container-active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-  transition-delay: 0.3s;
-}
-
-.inactive-div-modal {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.4s ease, visibility 0.4s;
-}
-
-.header-button {
-  height: 3rem;
-  width: 75%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 1rem;
-  margin: 0 1rem;
-}
-
-.section-slider-container-active {
-  width: 70%;
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease-in-out;
-  pointer-events: none;
-}
-
-.section-slider-container-inactive{
-  display: none;
-}
-
-.active-slide{
-  display: none;
-}
 
 .div-duvidas{
   margin: 1rem 0 0 0;
@@ -164,8 +117,9 @@
   justify-content: center;
   align-items: center;
   background-color: #e1ce8a;
-  border-radius: 1rem;
-  padding: 1rem;  
+  /* Menor que o raio do card (.5rem) para os cantos não parecerem cortados. */
+  border-radius: .5rem;
+  padding: 1rem;
   margin: 1rem 0 0 0;
 
   p {

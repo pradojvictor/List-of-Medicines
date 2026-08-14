@@ -2,66 +2,69 @@
     width: 80%;
     border-radius: .5rem;
     margin: .5rem;
-    padding: .5rem;
-    background: rgba(255, 255, 255, 0.50);
-    backdrop-filter: blur(8.8px);
-    -webkit-backdrop-filter: blur(8.8px);
+    /* Sem backdrop-filter e mais opaco: a ilustração de fundo atravessava o
+       card e deixava o texto difícil de ler. */
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 
     display: flex;
     flex-direction: column;
-    height: auto; 
-    max-height: 60vh;
+    height: auto;
+    /* Sem max-height. Havia `max-height: 60vh` junto com `overflow: hidden`:
+       como o JS define a altura do conteúdo pelo scrollHeight completo, tudo
+       que passasse de 60vh era cortado e ficava inalcançável — o conteúdo não
+       rolava (tinha altura cheia) e o card apenas escondia. Agora o card
+       cresce e quem rola é o .container-faq. */
     overflow: hidden;
-    cursor: pointer;
     user-select: none;
-    &:hover {
-        transition: .3s;
-        padding: 1rem;
-    }
+    /* Sem isto o card é item flex do .container-faq e encolhe quando a soma
+       dos cards passa da altura do menu: o card aberto ficava com a altura do
+       cabeçalho e o conteúdo escapava. Agora quem rola é o container. */
+    flex-shrink: 0;
 }
 
 .card-title {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    gap: .5rem;
 
-    
-    p {
-        width: 50%;
-        text-transform: capitalize;
-        font-weight: 500;
-    }
-}
-
-.card-title button {
-    width: 1.4rem;
-    height: 1.4rem;
-    border-radius: 50%;
-    background-color: transparent;
+    /* É um <button>: zera a aparência nativa e herda a tipografia. */
+    background: none;
     border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    font: inherit;
+    color: inherit;
+    text-align: left;
     cursor: pointer;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
 
-    flex-shrink: 0;
-    padding: 0.5rem 0;
-    z-index: 2;
-
-    path {
-        fill: rgb(0, 0, 0);
-        width: 100%;
-        height: 100%;
-        transition: .3s;
+    span {
+        /* Sem text-transform: capitalize — ele virava "Privacidade E Cookies".
+           Os títulos já vêm escritos corretamente do FaqMenu. */
+        font-weight: 600;
     }
 
     &:hover {
-        background-color: orange;
-        width: 1.5rem;
-        height: 1.5rem;
-        transition: .3s;
+        background: rgba(0, 0, 0, 0.04);
     }
+
+    &:focus-visible {
+        outline: 2px solid #eb8325;
+        outline-offset: -2px;
+    }
+}
+
+/* A seta é a pista visual de que a aba expande — antes não havia nenhuma. */
+.card-chevron {
+    flex-shrink: 0;
+    fill: currentColor;
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+
+.div-card.is-open .card-chevron {
+    transform: rotate(180deg);
 }
 
 .content-dynamic {
@@ -73,4 +76,22 @@
     box-sizing: border-box;
     padding: 0 1rem;
     contain: content;
+    overscroll-behavior: contain;
+}
+
+/* Respiro no rodapé. Sem isso o bloco interno encosta na borda inferior do
+   card e seus cantos arredondados são cortados pelo overflow, dando a
+   impressão de que o conteúdo vaza. Um bloco vazio em vez de margin-bottom
+   porque a margem do último filho nem sempre entra no scrollHeight. */
+.content-dynamic::after {
+    content: '';
+    display: block;
+    height: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-chevron,
+    .content-dynamic {
+        transition: none;
+    }
 }

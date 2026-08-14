@@ -22,6 +22,25 @@
   animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
+/* Saída: antes a dica simplesmente desaparecia do DOM, sem transição. */
+.modal-content.is-leaving {
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-content,
+  .modal-content.is-leaving {
+    animation-duration: 1ms;
+  }
+}
+
 .modal-content::after {
   content: '';
   position: absolute;

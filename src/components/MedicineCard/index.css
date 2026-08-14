@@ -4,9 +4,10 @@
   align-items: center;
   margin: auto;
   margin-top: .1rem;
-  background: rgba(255, 255, 255, 0.30);
-  backdrop-filter: blur(8.8px);
-  -webkit-backdrop-filter: blur(8.8px);
+  /* Sem backdrop-filter: o blur era refeito pelo compositor a cada frame do
+     scroll, em todos os cards ao mesmo tempo. A opacidade maior compensa a
+     perda do desfoque sobre a ilustração de fundo. */
+  background: rgba(255, 255, 255, 0.55);
   width: 85vw;
   border-radius: 1rem 1rem 0.5rem 0.5rem;
   overflow: hidden;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import FaqCard from '../CardFaq';
 import CardSimple from '../CardSimple';
 import Link from '../Link';
@@ -5,14 +6,18 @@ import './index.css';
 
 export default function FaqMenu({ onClosed, classfaq, onStartGuide, emailLink }) {
 
+    // Uma aba por vez: abrir uma fecha a anterior.
+    const [openCard, setOpenCard] = useState(null);
+
     return (
         <div className='container-faq'>
-            <span className={classfaq} onClick={onClosed}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <button type="button" className={classfaq} onClick={onClosed} aria-label="Fechar ajuda">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z" />
                 </svg>
-            </span>
-            <FaqCard title="duvidas">
+            </button>
+
+            <FaqCard id="duvidas" title="Dúvidas" isOpen={openCard === 'duvidas'} onToggle={setOpenCard}>
                 <div className='div-duvidas'>
                 <CardSimple title="Tem o medicamento?" question="Observe na lista de medicamentos ativos que todos ali listados estão disponíveis atualmente." />
                 <CardSimple title="Quanto tempo ele ficará no estoque?" question="Não temos como saber por quanto tempo o medicamento ficará disponível no estoque." />
@@ -22,16 +27,29 @@ export default function FaqMenu({ onClosed, classfaq, onStartGuide, emailLink })
                 <CardSimple title="Como eu posso ver mais informações do medicamento?" question="Clique em cima do medicamento na lista." />
                 </div>
             </FaqCard>
-            <FaqCard title="como usar">
+
+            <FaqCard id="como-usar" title="Como usar" isOpen={openCard === 'como-usar'} onToggle={setOpenCard}>
                 <div className='div-tutorial'>
-                    <button className='btn-tutorial' onClick={onStartGuide}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <button type="button" className='btn-tutorial' onClick={onStartGuide}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 18.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25s-.559 1.25-1.25 1.25zm1.961-5.928c-.904.975-.947 1.514-.935 2.178h-2.005c-.007-1.475.02-2.125 1.431-3.468.573-.544 1.025-.975.962-1.821-.058-.805-.73-1.226-1.365-1.226-.709 0-1.538.527-1.538 2.013h-2.01c0-2.4 1.409-3.95 3.59-3.95 1.036 0 1.942.339 2.55.955.57.578.865 1.372.854 2.298-.016 1.383-.857 2.291-1.534 3.021z" />
                         </svg>
+                        <span>Ver o passo a passo</span>
                     </button>
                 </div>
             </FaqCard>
-            <FaqCard title="autor">
+
+            <FaqCard id="privacidade" title="Privacidade e cookies" isOpen={openCard === 'privacidade'} onToggle={setOpenCard}>
+                <div className='div-duvidas'>
+                <CardSimple title="Este site usa cookies?" question="Não. O site não usa cookies e não guarda nada no seu aparelho." />
+                <CardSimple title="Vocês guardam meus dados?" question="Não. Não pedimos nome, CPF, telefone ou e-mail, e não é preciso criar conta para consultar a lista." />
+                <CardSimple title="E o que eu escrevo na busca?" question="Fica só no seu aparelho, enquanto a página está aberta. Nada é enviado nem guardado." />
+                <CardSimple title="Tem propaganda ou rastreamento?" question="Não. O site não usa anúncios nem ferramentas que acompanham o que você faz." />
+                <CardSimple title="E os links de WhatsApp, e-mail e mapa?" question="Ao tocar neles você sai deste site. A partir daí valem as regras de privacidade desses serviços." />
+                </div>
+            </FaqCard>
+
+            <FaqCard id="autor" title="Autor" isOpen={openCard === 'autor'} onToggle={setOpenCard}>
                 <div className='div-autor'>
                     <p>Desenvolvido por SAME CAPS II LESTE TERESINA-PI</p>
                     <p>Suporte: <Link className='faq-email' href={emailLink}>Enviar E-mail</Link></p>

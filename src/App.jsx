@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import FaqMenu from './components/FaqMenu';
 import Loader from './components/Loader';
 import MedicineCard from './components/MedicineCard';
@@ -20,7 +20,17 @@ function App() {
   const [toggle, setToggle] = useState(true);
 
   const [isActive, setIsActive] = useState(false)
-  const onMenu = () => setIsActive(!isActive);
+  // 'pending' -> 'showing' -> 'done'. O estado final é definitivo: uma vez
+  // fechada, a dica não reaparece (o StrictMode chega a agendar dois timers).
+  const [hint, setHint] = useState('pending');
+
+  const closeHint = useCallback(() => setHint('done'), []);
+
+  const onMenu = () => {
+    setIsActive(prev => !prev);
+    // A dica sai junto quando o usuário mexe no botão de informações.
+    setHint('done');
+  };
 
   const numero = '5586994478042';
   const mensagem = encodeURIComponent('Olá, gostaria de obter informações sobre os medicamentos disponíveis no site do CAPS II Leste. Poderiam me ajudar?');
@@ -192,6 +202,13 @@ const fetchMedicamentos = async () => {
     fetchMedicamentos();
   }, []);
 
+  // A dica só aparece depois que a lista carrega, para não competir com o loader.
+  useEffect(() => {
+    if (loading || hint !== 'pending') return;
+    const timer = setTimeout(() => setHint('showing'), 1000);
+    return () => clearTimeout(timer);
+  }, [loading, hint]);
+
   return (
     <div>
       <Loader loading={loading} />
@@ -241,7 +258,7 @@ const fetchMedicamentos = async () => {
             </div>
             <div>
             </div>
-            <ModalFAQ/>
+            <ModalFAQ open={hint === 'showing'} onClose={closeHint} />
         <span className={`${isActive}-span-info`} id='span-info' onClick={onMenu}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z" />

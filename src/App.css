@@ -246,9 +246,14 @@ p.name {
 }
 
 .false-span-info {
-  position: absolute;
-  bottom: 1.5rem;
+  /* fixed, e nao absolute: nenhum ancestral tinha position, entao o botao se
+     ancorava no documento e descia com o scroll, enquanto a dica (que ja era
+     fixed) ficava parada. Os dois precisam do mesmo referencial para andarem
+     juntos. O env() evita que o botao caia sob a barra inferior do iPhone. */
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
   right: 1.5rem;
+  z-index: 9998;
   background-color: rgba(255, 255, 255, .5);
   border-radius: 50%;
   width: 2.5rem;

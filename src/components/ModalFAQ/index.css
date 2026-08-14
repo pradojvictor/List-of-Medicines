@@ -1,6 +1,8 @@
 .modal-corner-container {
   position: fixed;
-  bottom: 20px;
+  /* Mesmo deslocamento de safe-area do botao ⓘ (.false-span-info), para os
+     dois permanecerem alinhados em qualquer aparelho. */
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   right: 80px;
   z-index: 9999;
   pointer-events: none;

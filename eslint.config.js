@@ -27,8 +27,8 @@ export default defineConfig([
     },
   },
   {
-    // Funções serverless da Vercel: rodam em Node, não no browser.
-    files: ['api/**/*.js'],
+    // Rodam em Node, não no browser: funções serverless e config do Vite.
+    files: ['api/**/*.js', 'vite.config.js'],
     languageOptions: {
       globals: globals.node,
     },

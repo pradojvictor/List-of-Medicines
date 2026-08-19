@@ -23,6 +23,11 @@ dist-ssr
 # Config local do Claude Code
 .claude/
 
+# Apresentação do projeto: tem repositório git próprio e é publicada
+# separadamente (pradojvictor.github.io/apresenta-o-SAME). Não faz parte
+# do código deste site.
+apresentacao/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -414,7 +414,7 @@ quem clonar este projeto não a recebe.
 
 ---
 
-## Sobre esta documentação
+## Sobre esta documentação (autor)
 
 Este README foi escrito com o **Claude Code**, a ferramenta de linha de comando da
 Anthropic, em conjunto com o autor do projeto. Ele substituiu o texto padrão que vinha
@@ -428,9 +428,8 @@ de token em uso não oferece. Foi assim também que apareceram o link sem destin
 rodapé e o risco de tela em branco com JSON fora do formato, ambos registrados em
 [Limitações conhecidas](#limitações-conhecidas).
 
-A mesma ferramenta foi usada antes neste repositório em trabalho de código: otimização de
-carregamento, revisão de segurança da função serverless, ajustes de responsividade e
-acessibilidade, e a construção do painel de ajuda. Todo o código foi revisado e publicado
+A mesma ferramenta foi usada antes neste repositório em trabalho de código: revisão de codigo como retirada de codigo morte e classes, ajustes de responsividade e
+acessibilidade,e otimização de imagens. Todo o código foi revisado e publicado
 pelo autor.
 
 ---
